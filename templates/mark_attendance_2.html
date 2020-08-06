@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block body %}
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Mark Attendance</h4>
+              </div>
+              <div class="card-body">
+                <h5>Lecture # {{ session.lecture_no }} <br> Course: {{session.course}}</h5>
+                <br>
+                <ol class="text-muted">
+                  <li>Instructions:</li>
+                  <li>Click on the button below to open the camera and start marking attendance. </li>
+                  <li>Press <strong>'Q'</strong> to close the camera after attendance is marked.</li>
+                </ol>
+                <a href="/fr_attendance" class="btn btn-primary">
+                  Start Marking Attendance
+                </a>
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+          </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+{% block body %}
+          <div class="col-md-12">
+            <div class="card text-center">
+              <div class="card-header">
+                <h4 class="card-title">My Attendance for Each Course</h4>
+              </div>
+              <div class="card-body">
+                {% if attendance is not none %}
+                  <nav aria-label="Page navigation example">
+                      <ul class="pagination pagination-lg">
+                        {% for course in unique_courses %}
+                          <li class="page-item"><a class="page-link" href="{{ url_for('view_attendance', course=course[0]) }}"> {{ course[0] }}</a></li>
+                        {% endfor %}
+                      </ul>
+                  </nav>
+
+                  <hr>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Roll No.</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Lecture No.</th>
+                        <th scope="col">Marked By</th>
+                        <th scope="col">Marking Date</th>
+                        <th scope="col">Marking Time</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for a in attendance %}
+                      <tr>
+                        <th>{{ a.rollno }}</th>
+                        <td>{{ a.course }}</td>
+                        <td>{{ a.lecture_no }}</td>
+                        <td>{{ a.marked_by }}</td>
+                        <td>{{ a.marked_date }}</td>
+                        <td>{{ a.marked_time }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  {% if not session.is_admin %}
+                    {% if request.args.get('course') is not none %}
+                    <a href="/studentdownloadcsv/{% if request.args.get('course') is none %}{{unique_courses[0][0]}}{% else %}{{request.args.get('course')}}{% endif %}" class="btn btn-primary">
+                      Download Attendance File for Course {{ request.args.get('course') }}
+                    </a>
+                    {% else %}
+                    <a href="/studentdownloadcsv/{{ unique_courses[0][0] }}" class="btn btn-primary">
+                      Download Attendance File for Course {{ unique_courses[0][0] }}
+                    </a>
+                    {% endif %}
+                  {% endif %}
+                {% else %}
+                  <h5 class="text text-danger">No Records Available</h5>
+                {% endif %}
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+          </div>
+{% endblock %}

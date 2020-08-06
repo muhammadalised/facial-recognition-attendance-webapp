@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">FR-Attendance</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          {% if not session.fty_logged_in and  not session.std_logged_in %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login_student">Student Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login_faculty">Faculty Login</a>
+          </li>
+          {% elif session.fty_logged_in %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/faculty">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/student_registration">Register Student</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/view_lectures_attendance">View Attendance</a>
+            </li>
+            {% if session.is_admin %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/faculty_registration">Register Faculty</a>
+            </li>
+            {% endif %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/attendance">Mark Attendance</a>
+            </li>
+          {% elif session.std_logged_in %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/student">My Dashboard</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/my_attendance">View Attendance</a>
+            </li>
+          {% endif %}
+        </ul>
+        {% if session.fty_logged_in or session.std_logged_in %}
+        <div class="nav-item">
+          <a class="nav-link" style="color:white" href="#">Welcome {{ session.uname }}</a>
+        </div>
+          <div class="nav-item">
+            <a class="nav-link" style="color:white" href="/logout">Logout</a>
+          </div>
+        {% endif %}
+      </div>
+</nav>

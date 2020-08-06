@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block body %}
+          <div class="jumbotron">
+            <h1 style="text-align:center">Welcome to FR-Attendance System</h1>
+          </div>
+          <div class="col-md-12">
+            <div class="card text-center">
+              {% if not session.fty_logged_in and  not session.std_logged_in %}
+                <div class="card-body">
+                  <a href="/login_student" class="btn btn-primary">
+                    Login as Student
+                  </a>
+                  <a href="/login_faculty" class="btn btn-primary">
+                    Login as Faculty
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block body %}
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Welcome {{ session.uname }}</h4>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Staff <i class="fas fa-user"></i></h5>
+                        <p class="card-text">{{ faculty_count }}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Students <i class="fa fa-graduation-cap" aria-hidden="true"></i></h5>
+                        <p class="card-text">{{ students_count }}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Lectures <i class="fa fa-book" aria-hidden="true"></i></h5>
+                        <p class="card-text">{{ lectures_count }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+          </div>
+{% endblock %}

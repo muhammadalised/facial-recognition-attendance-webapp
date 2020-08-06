@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block body %}
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Welcome {{ session.uname }}</h4>
+              </div>
+              <div class="card-body">
+                <h5>Overall Attendance per Course</h5>
+                <br>
+                <div class="row">
+                  {% for course in courses %}
+                  <div class="col-sm-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ course[0] }} <i class="fa fa-book" aria-hidden="true"></i></h5>
+                        <p class="card-text">{{ lectures_count[loop.index-1] }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                <hr>
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+          </div>
+{% endblock %}
