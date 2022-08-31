@@ -1,7 +1,4 @@
-import face_recognition
-import numpy as np
-import cv2, queue, threading, time
-import requests, os, re
+import cv2, queue, threading
 
 # bufferless VideoCapture
 class VideoCapture:
