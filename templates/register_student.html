@@ -16,9 +16,9 @@
                   </p>
                   {% endif %}
                   {% if temp_pic and session.img_captured %}
-                    <img src="../static/images/users/temp.jpg" height="300" width="300">
+                    <img src="{{ url_for('static', filename='images/users/temp.jpg') }}?xxx={{session.dt}}" height="300" width="300">
                   {% else %}
-                    <img src="../static/images/no-image.png" height="300" width="300">
+                    <img src="{{ url_for('static', filename='images/no-image.png') }}?xxx={{ session.dt }}" height="300" width="300">
                   {% endif %}
                   <p class="text-muted">Student Image</p>
                   {% if not session.img_captured %}

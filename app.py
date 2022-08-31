@@ -20,7 +20,7 @@ app.config['SECRET_KEY'] = '8IR4M7-R3c74GjTHhKzWODaYVHuPGqn4w92DHLqeYJA'
 
 db = SQLAlchemy(app)
 # Import models here as to avoid circular import issue
-from .models import *
+from models import *
 
 @app.route('/')
 def index():
@@ -209,6 +209,7 @@ def register_student():
 @app.route("/capture_image")
 @is_faculty_logged_in
 def capture_image():
+    session['dt'] = datetime.now()
     path = 'static/images/users'
     cap = cv2.VideoCapture(0)
 

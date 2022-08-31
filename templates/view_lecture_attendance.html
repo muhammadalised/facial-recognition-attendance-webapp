@@ -10,7 +10,7 @@
                   <nav aria-label="Page navigation example">
                       <ul class="pagination">
                         {% for lec in unique_lect_no %}
-                          <li class="page-item"><a class="page-link" href="{{ url_for('view_lectures_attendance', lecture=lec) }}">Lecture {{ lec[0] }}</a></li>
+                          <li class="page-item"><a class="page-link" href="{{ url_for('view_lectures_attendance', lecture=lec[0]) }}">Lecture {{ lec[0] }}</a></li>
                         {% endfor %}
                       </ul>
                   </nav>
